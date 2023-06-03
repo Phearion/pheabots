@@ -1,0 +1,117 @@
+/*Make a sober page */
+
+body {
+  background-color: #000000;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+
+.home-text {
+  position: relative;
+  top: 80vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(0, 255, 245); /* for WebKit browsers */
+  text-stroke: 1px rgb(0, 255, 245); /* for other browsers */
+  /*make it glow the stroke */
+    text-shadow: 0 0 10px rgba(0, 255, 245, 0.55);
+  transition: all .15s ease;
+}
+
+
+/* home-invite should be positioned at the bottom right corner of the page */
+.home-invite {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 5vh 5vw;
+}
+
+/* home-invite-button should be a parallelogram with all main lines parallel to the edges of the page but the top left corner should be not rounded
+but rather cut like a triangle */
+
+
+.home-invite-button {
+  /* Clean style */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--button-text-color);
+  cursor: pointer;
+  /* Clean style */
+  --button-text-color: #00fff5;
+  --button-text-color-hover: var(--button-background-color);
+  --border-color: #00fff5;
+  --button-background-color: #ece8e1;
+  --button-inner-border-color: transparent;
+  --button-bits-color: #00fff5;
+  --button-bits-color-hover: var(--button-background-color);
+
+  position: relative;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 25px;
+  transition: all .15s ease;
+}
+
+.home-invite-button::before,
+.home-invite-button::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0; left: 0;
+  height: calc(50% - 5px);
+  border: 1px solid var(--border-color);
+  transition: all .15s ease;
+}
+
+.home-invite-button::before {
+  top: -5px;
+  border-bottom-width: 0;
+}
+
+.home-invite-button::after {
+  bottom: -5px;
+  border-top-width: 0;
+}
+
+.home-invite-button:active,
+.home-invite-button:focus {
+  outline: none;
+}
+
+
+.home-invite-button:active::before,
+.home-invite-button:active::after {
+  right: 3px;
+  left: 3px;
+}
+
+.home-invite-button:active::before {
+  top: 5px;
+}
+
+.home-invite-button:active::after {
+  bottom: 5px;
+}
+
+.home-invite-button:hover {
+  /*  smooth background transparent light transition with darker text */
+    --button-text-color: var(--button-text-color-hover);
+    --button-bits-color: var(--button-bits-color-hover);
+}
+
+

@@ -1,0 +1,179 @@
+.carousel-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    perspective: 1500px;
+    transform-style: preserve-3d;
+}
+
+.carousel-item {
+    position: absolute;
+    width: 17vw;
+    height: 50vh;
+    margin: 10em;
+    transition: transform 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.carousel-item > img {
+    /* stretch the image to fill the carousel item */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* center item has full opacity */
+.carousel-item.center {
+    opacity: 1;
+    /* highlight effect */
+    border: 2px solid #00fff5;
+    box-shadow: 0 0 2px #00fff5;
+}
+
+/* left item has lower opacity and is shifted to the left */
+.carousel-item.left {
+    opacity: 0.2;
+    transform: translateX(-25em) translateY(-10%) rotateY(-30deg) rotateZ(10deg) scale(0.9);
+}
+
+/* right item has lower opacity and is shifted to the right */
+.carousel-item.right {
+    opacity: 0.2;
+    transform: translateX(25em) translateY(-10%) rotateY(30deg) rotateZ(-10deg) scale(0.9);
+}
+
+/* hover effect for non-center items */
+.carousel-item:not(.center):hover {
+    opacity: 0.5;
+}
+
+/* flipped items */
+.carousel-item.flipped {
+    transform: rotateY(180deg) rotateX(-10deg) !important;
+}
+
+.carousel-item.flipped > img {
+    opacity: 0.15;
+    transition: opacity 0.5s ease-in-out;
+    transition-delay: 0.2s;
+}
+
+.carousel-item-text {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    background-color: rgba(75, 75, 75, 0.7);
+    color: #ffffff;
+    padding: 1em;
+    border-radius: 10px;
+    width: 70%;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    display: none;
+}
+
+.carousel-item.flipped .carousel-item-text {
+    display: block;
+    transition-delay: 0.2s; /* delay text display to match flip animation */
+}
+
+.carousel-item:not(.flipped) .carousel-item-text {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-item:not(.flipped) > img {
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* make it responsive so that we can swipe to get the next card but only 1 card should be visible at a time */
+@media (max-width: 768px) {
+    .carousel-item {
+        width: 80vw;
+        height: 50vh;
+        transition: transform 0.8s cubic-bezier(0.42, 0, 0.58, 1);
+    }
+
+    .carousel-item-text {
+        width: 90%;
+    }
+
+    /* only one card should be visible; others should be visible only when the user swipes the screen */
+    .carousel-item:not(.center) {
+        display: none;
+    }
+
+    /* center item has full opacity */
+    .carousel-item.center {
+        opacity: 1;
+        /* highlight effect */
+        border: 2px solid #00fff5;
+        box-shadow: 0 0 2px #00fff5;
+    }
+
+    /* left item has lower opacity and is shifted to the left */
+    .carousel-item.left {
+        opacity: 0.2;
+        transform: translateX(-25em) translateY(-10%) rotateY(-30deg) rotateZ(10deg) scale(0.9);
+    }
+
+    /* right item has lower opacity and is shifted to the right */
+    .carousel-item.right {
+        opacity: 0.2;
+        transform: translateX(25em) translateY(-10%) rotateY(30deg) rotateZ(-10deg) scale(0.9);
+    }
+
+    /* hover effect for non-center items */
+    .carousel-item:not(.center):hover {
+        opacity: 0.5;
+    }
+
+    /* flipped items */
+    .carousel-item.flipped {
+        transform: rotateY(180deg) rotateX(-10deg) !important;
+    }
+
+    .carousel-item.flipped > img {
+        opacity: 0.15;
+        transition: opacity 0.5s ease-in-out;
+        transition-delay: 0.2s;
+    }
+
+    .carousel-item-text {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateY(180deg);
+        background-color: rgba(75, 75, 75, 0.7);
+        color: #ffffff;
+        padding: 1em;
+        border-radius: 10px;
+        width: 70%;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        display: none;
+    }
+
+    .carousel-item.flipped .carousel-item-text {
+        display: block;
+        transition-delay: 0.2s; /* delay text display to match flip animation */
+    }
+
+    .carousel-item:not(.flipped) .carousel-item-text {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .carousel-item:not(.flipped) > img {
+        transition: opacity 0.5s ease-in-out;
+    }
+}

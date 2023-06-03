@@ -1,0 +1,85 @@
+.navbar {
+    /* Use the position property to position the navbar relative to its parent element */
+    position: relative;
+    /* Use the background property to set the navbar's background color */
+    background: rgb(0, 0, 0);
+    /* Set the height of the navbar to 5% of the viewport height */
+    height: 5vh;
+    /* Use the display, justify-content, and align-items properties to center the navbar items horizontally and vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* add two glow lines on top and bottom of navbar going from light blue to light pink   */
+    box-shadow: 0 0 10px 1px rgb(0, 255, 245), 0 0 10px 1px rgb(250, 144, 229);
+    /* Use the z-index property to position the navbar above other elements */
+    z-index: 1;
+
+}
+
+.navbar-logo {
+    /* Use the position property to position the logo relative to the navbar */
+    position: absolute;
+    /* Set the left position to 20px to create a margin */
+    left: 0;
+    /* Use the text-decoration property to remove the underline from the logo link */
+    text-decoration: none;
+    /* Use the display, justify-content, and align-items properties to center the logo vertically and horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Use the transform property to adjust the position of the logo */
+    transform: translateY(55%);
+    top: -45%;
+}
+
+.menu-icon {
+    /* Use the position property to position the menu icon relative to the navbar */
+    position: absolute;
+    /* Set the right position to 0 to align the icon with the right edge of the navbar */
+    right: 0;
+    /* Use the color property to set the color of the icon */
+    color: whitesmoke;
+    /* Use the font property to set the font size and weight of the icon */
+    font: 20px bold;
+    /* Set the margin to 25px to create a margin between the icon and the navbar edge */
+    margin: 25px;
+    /* Use the align-items property to center the icon vertically */
+    align-items: center;
+}
+
+.menus {
+    /* Use the display property to set the menus to display as a flex container */
+    display: flex;
+    /* Use the list-style property to remove the default list styling */
+    list-style: none;
+}
+
+.menu-items {
+    /* Use the position property to position the menu items relative to the navbar */
+    position: relative;
+    /* Use the color property to set the color of the menu items */
+    color: whitesmoke;
+    /* Use the font property to set the font size and weight of the menu items */
+    font: 20px bold;
+    /* Set the margin to 25px to create a margin between the menu items */
+    margin: 2.5vw;
+    /* Use the align-items property to center the menu items vertically */
+    align-items: center;
+}
+
+.menu-items a {
+    /* Use the display property to set the menu item links to display as blocks */
+    display: block;
+    /* Use the font-size and color properties to inherit the values from the parent element */
+    font-size: inherit;
+    color: inherit;
+    /* Use the text-decoration property to remove the underline from the menu item links */
+    text-decoration: none;
+}
+
+/* set last menu item to the absolute right of the navbar */
+.menu-items:last-child {
+    position: absolute;
+    right: 0;
+}
