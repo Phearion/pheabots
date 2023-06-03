@@ -21,9 +21,10 @@ const Carousel: FC = () => {
     const [flipped, setFlipped] = useState<boolean>(false);
     const [isSwiping, setIsSwiping] = useState<boolean>(false);
     const [startTouchTime, setStartTouchTime] = useState<number>(0);
-    const swipeThreshold = 50; // Minimum distance for a swipe to be registered
+    const swipeThreshold = 150; // Minimum distance for a swipe to be registered
     const [startTouchPosition, setStartTouchPosition] = useState<number>(0);
     const [endTouchPosition, setEndTouchPosition] = useState<number>(0);
+    const [isTap, setIsTap] = useState<boolean>(false);
 
     useEffect(() => {
         const inviteButton = document.getElementsByClassName('home-invite-button')[0] as HTMLElement;
@@ -36,33 +37,61 @@ const Carousel: FC = () => {
 
     const handleSwipeStart = (e: React.TouchEvent<HTMLDivElement>) => {
         setIsSwiping(true);
+        setIsTap(true);
         setStartTouchTime(e.timeStamp);
         const touch: React.Touch = e.touches[0];
         const startX: number = touch.clientX;
         setStartTouchPosition(startX);
     };
 
-    const handleSwipeMove = (e: TouchEvent) => {
-        const touch: Touch = e.touches[0];
+    const handleSwipeMove = (e: React.TouchEvent<HTMLDivElement>) => {
+        if (isTap) {
+            setIsTap(false);
+        }
+        const touch: React.Touch = e.touches[0];
         const moveX: number = touch.clientX;
 
         setEndTouchPosition(moveX);
     };
 
-    const handleSwipeEnd = () => {
-        setIsSwiping(false);
-        const swipeDistance = endTouchPosition - startTouchPosition;
 
-        if (Math.abs(swipeDistance) > swipeThreshold) {
-            if (swipeDistance > 0) {
-                // Swiped right, show the previous image
-                setCurrentImage((prevImage) => (prevImage - 1 + images.length) % images.length);
+    const handleSwipeEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+        setIsSwiping(false);
+
+        if (isTap) {
+            return;
+        }
+
+
+        const swipeDistance = endTouchPosition - startTouchPosition;
+        const swipeTime = e.timeStamp - startTouchTime;
+
+        let newIndex: number = 0;
+
+        if (swipeDistance > swipeThreshold && swipeTime < 1000) {
+            // swipe right
+            if (currentImage === 0) {
+                newIndex = images.length - 1;
+                setCurrentImage(newIndex);
             } else {
-                // Swiped left, show the next image
-                setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+                newIndex = currentImage - 1;
+                setCurrentImage(newIndex);
             }
+            selectImage(newIndex);
+        }
+        else if (swipeDistance < -swipeThreshold && swipeTime < 1000) {
+            // swipe left
+            if (currentImage === images.length - 1) {
+                newIndex = 0;
+                setCurrentImage(newIndex);
+            } else {
+                newIndex = currentImage + 1;
+                setCurrentImage(newIndex);
+            }
+            selectImage(newIndex);
         }
     };
+
 
     const selectImage = (index: number) => {
         if (!images[index] || !images[index].includes) {
@@ -70,8 +99,7 @@ const Carousel: FC = () => {
         }
         if (images[index].includes("carousel-1")) {
             document.getElementsByClassName("home-text")[0].innerHTML = "Please select one of our bots!";
-        }
-        else if (images[index].includes("carousel-2")) {
+        } else if (images[index].includes("carousel-2")) {
             document.getElementsByClassName("home-invite-button")[0].innerHTML = "Invite Zilya!";
             document.getElementsByClassName("home-text")[0].innerHTML = "Zilya was picked!";
         } else {
@@ -79,7 +107,7 @@ const Carousel: FC = () => {
             document.getElementsByClassName("home-text")[0].innerHTML = "A-Nia was picked!";
         }
 
-        if (index === currentImage && !flipped) {
+        if (index === currentImage && !flipped && !isSwiping) {
             // flip the card
             setFlipped(true);
             const flippedElement: Element = document.getElementsByClassName("carousel-item")[currentImage];
@@ -114,15 +142,7 @@ const Carousel: FC = () => {
         }
     };
 
-    const debounce = (func: Function, delay: number) => {
-        let timer: NodeJS.Timeout;
-        return function (this: any, ...args: any[]) {
-            clearTimeout(timer);
-            timer = setTimeout(() => func.apply(this, args), delay);
-        };
-    };
 
-    const debouncedSelectImage = debounce(selectImage, 100);
 
     const getClassName = (index: number) => {
         const center = currentImage;
@@ -148,9 +168,9 @@ const Carousel: FC = () => {
                     <div
                         className={getClassName(index)}
                         onClick={() => selectImage(index)}
-                        onTouchStart={handleSwipeStart}
-                        onTouchEnd={handleSwipeEnd}
-                        onTouchMove={() => handleSwipeMove}
+                        onTouchStart={(e) => handleSwipeStart(e)}
+                        onTouchEnd={(e) => handleSwipeEnd(e)}
+                        onTouchMove={(e) => handleSwipeMove(e)}
                         key={index}
                     >
                         <img src={image} alt={`Image ${index}`} />

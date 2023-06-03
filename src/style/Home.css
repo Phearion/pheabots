@@ -22,17 +22,22 @@ body {
   -webkit-text-stroke: 1px rgb(0, 255, 245); /* for WebKit browsers */
   text-stroke: 1px rgb(0, 255, 245); /* for other browsers */
   /*make it glow the stroke */
-    text-shadow: 0 0 10px rgba(0, 255, 245, 0.55);
+  text-shadow: 0 0 10px rgba(0, 255, 245, 0.55);
   transition: all .15s ease;
 }
 
 
-/* home-invite should be positioned at the bottom right corner of the page */
+/* home-invite should be positioned at the bottom center of the page */
 .home-invite {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 5vh 5vw;
+  bottom: 2vh;
+  display: flex;
+  /*bottom right*/
+  right: 2vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 /* home-invite-button should be a parallelogram with all main lines parallel to the edges of the page but the top left corner should be not rounded
@@ -65,6 +70,7 @@ but rather cut like a triangle */
   font-weight: bold;
   font-size: 25px;
   transition: all .15s ease;
+  width: 100%;
 }
 
 .home-invite-button::before,
@@ -110,8 +116,38 @@ but rather cut like a triangle */
 
 .home-invite-button:hover {
   /*  smooth background transparent light transition with darker text */
-    --button-text-color: var(--button-text-color-hover);
-    --button-bits-color: var(--button-bits-color-hover);
+  --button-text-color: var(--button-text-color-hover);
+  --button-bits-color: var(--button-bits-color-hover);
 }
 
 
+
+/* responsive design, text should be below the navbar just above the carousel and invite
+
+
+/* responsive design, text should be below the navbar just above the carousel and invite button should be at the bottom center*/
+@media screen and (max-width: 768px) {
+  .home-text {
+    top: 10vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    width: 80vw;
+  }
+
+  .home-invite {
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 2vh;
+    height: 10vh;
+  }
+
+  .home-invite-button {
+      width: 80vw;
+      font-size: 2rem;
+  }
+}

@@ -94,7 +94,7 @@
 }
 
 /* make it responsive so that we can swipe to get the next card but only 1 card should be visible at a time */
-@media (max-width: 768px) {
+@media (max-width: 950px) {
     .carousel-item {
         width: 80vw;
         height: 50vh;
