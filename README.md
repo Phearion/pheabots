@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+<h1 align="center"><strong><i>pheabots.fr by Phearion</i></strong></h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+![Phearion](img.png)
 
-In the project directory, you can run:
+<div align="center">
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<a href="https://reactjs.org">
+<img src="https://img.shields.io/badge/Made%20With-React.JS-61dafb.svg?style=for-the-badge&logo=react" alt="Made with Python 3.7">
+</a>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<a href="">
+    <img src="https://img.shields.io/badge/Team-Phearion-cyan.svg?style=for-the-badge" alt="Made with Python 3.7">
+</a>
 
-### `npm test`
+<a href="">
+    <img src="https://img.shields.io/badge/Language-TS-cyan.svg?style=for-the-badge&logo=TypeScript" alt="Made with TS">
+</a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+</div>
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Description
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+pheabots is the official website to invite one of our 2 bots:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* A-Nia
+* Zilya
 
-### `npm run eject`
+> Zilya is a multipurpose bots with a lot of features and a lot of commands.
+It is for the moment in beta version and is not available for everyone.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+> A-Nia aka the archive is the first ever bot made to help students.
+Through its large archive of courses, it can help you to find the course you need.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Credits
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Phearion TEAM
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* ApoCs TEAM
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img width="30%" src="Phearion-logo.png">
+<img width="30%" src="https://imgur.com/vZxsZTY.png">
